@@ -211,14 +211,18 @@
                                                             <constraint firstAttribute="height" constant="120" id="N1x-yA-EtI"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumScaleFactor="0.45000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Gxi-6J-g1r">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  " lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gxi-6J-g1r">
                                                         <rect key="frame" x="120" y="0.0" width="223" height="120"/>
-                                                        <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet malesuada est. Fusce commodo vitae elit non volutpat. Duis.</string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="Gxi-6J-g1r" firstAttribute="top" secondItem="lep-Yw-kt1" secondAttribute="top" id="1hj-Ge-66M"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Gxi-6J-g1r" secondAttribute="bottom" id="2t9-UV-Ngf"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Gxi-6J-g1r" secondAttribute="trailing" id="ZAs-Zx-pWH"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <constraints>
@@ -367,7 +371,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x5O-B2-Dib">
                                 <rect key="frame" x="0.0" y="352" width="375" height="30"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Next evolution: Venosaur LVL 32 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQj-QC-2DQ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Next evolution: Venosaur LVL 32 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MQj-QC-2DQ">
                                         <rect key="frame" x="62" y="7" width="251" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>

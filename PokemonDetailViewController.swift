@@ -57,7 +57,21 @@ class PokemonDetailViewController: UIViewController {
      pokemonID.text = "\(_pokemon.pokeID)"
      mainPokeImage.image = UIImage(named: "\(_pokemon.pokeID)")
      sidePokeImage1.image = UIImage(named: "\(_pokemon.pokeID)")
-        pokemonType.text = _pokemon.type
+     pokemonType.text = _pokemon.type
+     pokemonDescription.text = _pokemon.pokeDescp
+        if _pokemon.nextEvolutionLVL == 0{
+              pokemonNextEvolutionFirst.text = "Mega level "
+            pokemonNextEvolution.isHidden = true
+            sidePokeImage2.isHidden = true
+        }
+        else{
+            pokemonNextEvolution.text = _pokemon.nextEvolution
+            pokemonNextEvolution.isHidden = false
+            sidePokeImage2.isHidden = false
+            pokemonNextEvolutionFirst.text = "Next evolution \(_pokemon.nextEvolution) at level \(_pokemon.nextEvolutionLVL) "
+            sidePokeImage2.image = UIImage(named: "\(_pokemon.nextEvolutionID)")
+        }
+
     }
 
     

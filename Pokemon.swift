@@ -19,6 +19,10 @@ class Pokemon{
     private var _baseAttack: Int!
     private var _pokemonURL: String!
     private var _nextEvolution: String!
+    private var _nextEvolutionID: Int!
+    private var _nextEvolutionLVL: Int!
+    
+    
     init(pokeName: String,pokeID: Int){
         self._pokemonName=pokeName
         self._pokemonID=pokeID
@@ -61,8 +65,58 @@ class Pokemon{
                     else{
                         self._type=" "
                     }
+                    
+                    if let callDescp = mainDict["descriptions"] as? [Dictionary<String,AnyObject>], callDescp.count>0{
+                        if let url = callDescp[0]["resource_uri"]{
+                            request("\(URL_BASE)\(url)").responseJSON(completionHandler: { (response) in
+                                if let descriptionDIct = response.result.value as? Dictionary<String,AnyObject>{
+                                    if let descp = descriptionDIct["description"] as? String{
+                                        self._pokemonDesp = descp
+                                      let newDescription = descp.replacingOccurrences(of: "POKMON", with: "Pokemon")
+                                        self._pokemonDesp = newDescription
+                                    }
+                                 }
+                                     completed()
+                            })
+                        }
+                     
+                    }else{
+                        self._pokemonDesp = " "
+                    }
+                 
+                    if let evol = mainDict["evolutions"] as? [Dictionary<String,AnyObject>], evol.count>0{
+                        if let nextEvolution = evol[0]["to"] as? String{
+                            if nextEvolution.range(of: "mega") == nil{
+                                self._nextEvolution = nextEvolution
+                                if let uri = evol[0]["resource_uri"] as? String {
+                                    
+                                    let newStr = uri.replacingOccurrences(of: "/api/v1/pokemon/", with: "")
+                                    let nextEvoId = newStr.replacingOccurrences(of: "/", with: "")
+                                    
+                                    self._nextEvolutionID = Int(nextEvoId)
+                                    
+                                    if let lvlExist = evol[0]["level"] {
+                                        
+                                        if let lvl = lvlExist as? Int {
+                                            
+                                            self._nextEvolutionLVL = lvl
+                                        }
+                                        
+                                    } else {
+                                        
+                                        self._nextEvolutionLVL = 0
+                                    }
+                                    
+                                }
+                                
+                                
+                            }
+                        }
+                       
+                    }
+                    
                 }
-                completed()
+        
            })
     
             
@@ -122,5 +176,22 @@ class Pokemon{
         }
         return _baseAttack
     }
-    
+    var nextEvolution: String{
+        if _nextEvolution == nil{
+            _nextEvolution = ""
+        }
+        return _nextEvolution
+    }
+    var nextEvolutionID: Int{
+        if _nextEvolutionID == nil{
+            _nextEvolutionID = 0
+        }
+        return _nextEvolutionID
+    }
+    var nextEvolutionLVL: Int{
+        if _nextEvolutionLVL == nil{
+            _nextEvolutionLVL = 0
+        }
+        return _nextEvolutionLVL
+    }
 }
